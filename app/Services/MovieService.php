@@ -119,4 +119,27 @@ class MovieService
 
         return $stocks;
     }
+
+    public function retrieveSimilar(Movie|stdClass $movie, Collection $movies): array
+    {
+        $similarMovies = [];
+
+        for ($i = 0; $i < count($movies); $i++) {
+            if (count($similarMovies) === 5)
+                break;
+
+            $similarCount = 0;
+            foreach ($movies[$i]->tags as $tag) {
+                if (in_array($tag, $movie->tags) && $movie->id !== $movies[$i]->id) {
+                    $similarCount++;
+                }
+            }
+
+            if ($similarCount >= 2) {
+                $similarMovies[] = $movies[$i];
+            }
+        }
+
+        return $similarMovies;
+    }
 }

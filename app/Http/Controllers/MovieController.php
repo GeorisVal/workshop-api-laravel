@@ -39,4 +39,17 @@ class MovieController extends Controller
             'movies' => $movies
         ]);
     }
+
+    public function show(int $id, MovieService $movieService): JsonResponse
+    {
+        $movie = Movie::find($id);
+        $movies = $this->showAll($movieService, true);
+
+        $movie = $movieService->retrieveExternMovieData($movie);
+        $movie->similar = $movieService->retrieveSimilar($movie, $movies);
+
+        return response()->json([
+            'movie' => $movie
+        ]);
+    }
 }
