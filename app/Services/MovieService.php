@@ -7,7 +7,7 @@ use App\Models\Genre;
 use App\Models\Movie;
 use App\Models\Support;
 use App\Models\Tag;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use stdClass;
 

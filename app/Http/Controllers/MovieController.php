@@ -14,5 +14,9 @@ class MovieController extends Controller
         for ($i = 0; $i < count($movies); $i++) {
             $movies[$i] = $movieService->retrieveExternMovieData($movies[$i]);
         }
+
+        return response()->json([
+            'movies' => $movies
+        ]);
     }
 }
