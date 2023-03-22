@@ -33,6 +33,12 @@ class MovieService
 
         $movie->tags = $this->retrieveTags($movie->id);
 
+        $movie->cast = $this->retrieveCast($movie->id);
+
+        $movie->supports = $this->retrieveSupports($movie->id);
+
+        $movie->stocks = $this->retrieveStock($movie->id);
+
         return $movie;
     }
 
